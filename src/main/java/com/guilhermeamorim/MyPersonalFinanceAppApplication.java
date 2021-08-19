@@ -1,4 +1,4 @@
-package com.guilhermeamorim.security;
+package com.guilhermeamorim;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

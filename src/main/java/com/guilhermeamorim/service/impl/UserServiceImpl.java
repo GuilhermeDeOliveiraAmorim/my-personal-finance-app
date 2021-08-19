@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.guilhermeamorim.exceptions.BusinessRulesExceptions;
 import com.guilhermeamorim.model.entity.User;
-import com.guilhermeamorim.repository.UserRepository;
+import com.guilhermeamorim.model.repository.UserRepository;
 import com.guilhermeamorim.service.UserService;
 
 @Service

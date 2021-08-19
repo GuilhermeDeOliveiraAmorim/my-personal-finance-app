@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.springframework.data.convert.Jsr310Converters;
 
 import com.guilhermeamorim.model.enums.EntryStatus;
 import com.guilhermeamorim.model.enums.EntryType;
@@ -46,14 +43,6 @@ public class Entry {
 	@Column(name = "entry_value")
 	private BigDecimal value;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_user")
-	private User user;
-	
-	@Column(name = "created")
-	@Convert(converter = Jsr310Converters.LocalDateTimeToDateConverter.class)
-	private LocalDate created;
-	
 	@Column(name = "entry_type")
 	@Enumerated(value = EnumType.STRING)
 	private EntryType type;
@@ -61,5 +50,13 @@ public class Entry {
 	@Column(name = "entry_status")
 	@Enumerated(value = EnumType.STRING)
 	private EntryStatus status;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_user")
+	private User user;
+	
+	@Column(name = "created")
+	//@Convert(converter = Jsr310Converters.LocalDateTimeToDateConverter.class)
+	private LocalDate created;
 	
 }

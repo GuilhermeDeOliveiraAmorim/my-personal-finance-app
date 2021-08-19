@@ -1,4 +1,4 @@
-package com.guilhermeamorim.model.entity;
+package com.guilhermeamorim.model.enums;
 
 public enum EntryStatus {
 	

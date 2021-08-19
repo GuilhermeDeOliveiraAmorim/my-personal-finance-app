@@ -17,6 +17,9 @@ import javax.persistence.Table;
 
 import org.springframework.data.convert.Jsr310Converters;
 
+import com.guilhermeamorim.model.enums.EntryStatus;
+import com.guilhermeamorim.model.enums.EntryType;
+
 import lombok.Builder;
 import lombok.Data;
 

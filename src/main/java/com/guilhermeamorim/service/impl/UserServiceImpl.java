@@ -26,6 +26,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User saveUser(User user) {
+		
+		emailValidation(user.getEmail());
 		return null;
 	}
 

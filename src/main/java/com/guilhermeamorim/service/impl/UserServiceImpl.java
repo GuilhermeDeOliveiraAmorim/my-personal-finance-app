@@ -1,8 +1,12 @@
 package com.guilhermeamorim.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.guilhermeamorim.exceptions.AuthenticationErrorExceptions;
 import com.guilhermeamorim.exceptions.BusinessRulesExceptions;
 import com.guilhermeamorim.model.entity.User;
 import com.guilhermeamorim.model.repository.UserRepository;
@@ -15,20 +19,42 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	public UserServiceImpl(UserRepository userRepository) {
+		
 		super();
+		
 		this.userRepository = userRepository;
+		
 	}
 
 	@Override
 	public User login(String email, String password) {
-		return null;
+		
+		Optional<User> user = userRepository.findByEmail(email);
+		
+		if (!user.isPresent()) {
+			
+			throw new AuthenticationErrorExceptions("User not found for the email entered");
+			
+		}
+		
+		if (!user.get().getPassword().equals(password)) {
+			
+			throw new AuthenticationErrorExceptions("Invalid password");
+			
+		}
+		
+		return user.get();
+		
 	}
 
 	@Override
+	@Transactional
 	public User saveUser(User user) {
 		
 		emailValidation(user.getEmail());
-		return null;
+		
+		return userRepository.save(user);
+		
 	}
 
 	@Override
